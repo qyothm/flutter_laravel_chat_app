@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
     ];
 
+    const USER_TOKEN = "userToken";
      /**
      * Get all of the comments for the User
      *
