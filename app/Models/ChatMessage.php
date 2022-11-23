@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ChatMessage extends Model
 {
     use HasFactory;
 
-    protected $table = "chat_message";
+    protected $table = "chat_messages";
     protected $guarded = ['id'];
 
     protected $touches = ['chat'];
@@ -31,6 +32,6 @@ class ChatMessage extends Model
      */
     public function chat(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'chat_id');
+        return $this->belongsTo(Chat::class, 'chat_id');
     }
 }

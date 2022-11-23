@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Chat;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class GetMessageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +24,12 @@ class RegisterRequest extends FormRequest
      */
     public function rules()
     {
+        $chatModel = get_class(new Chat());
+
         return [
-            'email'=>'required|unique:users,email',
-            'password'=>'required|confirmed'
+            'chat_id' => "required|exists:{$chatModel},id",
+            'page' => 'required|numeric',
+            'page_size' => 'nullable|numeric',
         ];
     }
 }
