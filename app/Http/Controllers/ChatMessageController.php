@@ -42,7 +42,7 @@ class ChatMessageController extends Controller
         $chatMessage->load('user');
 
         /// TODO send broadcast event to pusher and send notification to onesignal services
-        $this->sendNotificationToOther($chatMessage);
+        //$this->sendNotificationToOther($chatMessage);
 
         return $this->success($chatMessage,'Message has been sent successfully.');
     }
